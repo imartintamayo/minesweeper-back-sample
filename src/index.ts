@@ -1,6 +1,6 @@
 import 'reflect-metadata';
-import { startServer } from './app';
-import { connect } from './repository/db.connect';
+import startServer from './app';
+import connect from './repository/db.connect';
 
 const main = async () => {
     await connect();
@@ -8,7 +8,7 @@ const main = async () => {
     const port = 3000;
 
     app.listen(port);
-    console.log(`Server on port: ${port}`);
+    console.log(`Server on port: ${port}`); // eslint-disable-line
 }
 
 main();

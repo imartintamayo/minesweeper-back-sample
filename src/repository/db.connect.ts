@@ -1,13 +1,13 @@
 import mongooose from 'mongoose';
 
-export const connect = async () => {
-    try {
-        await mongooose.connect('mongodb://localhost/minesweeper', {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-        });
-        console.log('db connected');
-    } catch (error) {
-        console.log('error connecting to db', error);
-    }
+export default async function connect() {
+  try {
+    await mongooose.connect('mongodb://localhost/minesweeper', {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    console.log('db connected'); // eslint-disable-line
+  } catch (error) {
+    console.log('error connecting to db', error); // eslint-disable-line
+  }
 }

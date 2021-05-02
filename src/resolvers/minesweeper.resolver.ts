@@ -1,28 +1,30 @@
-import { Query, Resolver, Mutation, Arg } from 'type-graphql';
+import {
+  Query, Resolver, Mutation, Arg,
+} from 'type-graphql';
 import { createGame, getGame, listGames } from '../repository/minesweeper.repository';
 import { CreateGameInput, GetGameInput, Game } from '../types/minesweeper.types';
 
 @Resolver()
-export class MinesweeperResolver {
+export default class MinesweeperResolver {
     @Query(() => [Game])
-    async listGames() {
-        const games = await listGames();
-        return games;
-    }
+  async listGames() {
+    const games = await listGames();
+    return games;
+  }
 
     @Query(() => Game)
     async getGame(
-        @Arg('input') input: GetGameInput
+        @Arg('input') input: GetGameInput,
     ) {
-        const game = await getGame(input);
-        return game;
+      const game = await getGame(input);
+      return game;
     }
 
     @Mutation(() => Game)
     async createGame(
-        @Arg('input') input: CreateGameInput
+        @Arg('input') input: CreateGameInput,
     ) {
-        const game = await createGame(input);
-        return game;
+      const game = await createGame(input);
+      return game;
     }
 }
