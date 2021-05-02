@@ -1,8 +1,9 @@
 import mongooose from 'mongoose';
+import environment from '../environment';
 
 export default async function connect() {
   try {
-    await mongooose.connect('mongodb://localhost/minesweeper', {
+    await mongooose.connect(environment.mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });

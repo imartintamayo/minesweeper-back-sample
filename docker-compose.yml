@@ -1,0 +1,25 @@
+version: "3"
+
+services: 
+  minesweeper-sample:
+    container_name: minesweeper-sample
+    restart: always
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes: 
+        - .:/usr/src/app
+        - /usr/src/app/dist
+        - /usr/src/app/node_modules
+    environment: 
+      - PORT=3000
+      - MONGODB_URI=mongodb://mongodb/minesweeper
+    ports:
+      - "3000:3000"
+    networks: 
+      - mongodb
+
+networks:
+  mongodb:
+    name: mongodb
+    external: true
