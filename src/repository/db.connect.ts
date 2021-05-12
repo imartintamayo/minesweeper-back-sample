@@ -1,5 +1,5 @@
 import mongooose from 'mongoose';
-import environment from '../environment';
+import { environment } from '../environment';
 
 export default async function connect() {
   try {

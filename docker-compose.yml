@@ -12,8 +12,7 @@ services:
         - /usr/src/app/dist
         - /usr/src/app/node_modules
     environment: 
-      - PORT=3000
-      - MONGODB_URI=mongodb://mongodb/minesweeper
+      - ENVIRONMENT=development
     ports:
       - "3000:3000"
     networks: 

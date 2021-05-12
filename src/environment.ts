@@ -1,10 +1,29 @@
-require('dotenv').config();
-import { Environment } from './types/environment.types';
+import { Environment } from './types/app.types';
 
-const environment: Environment = {
-    port: process.env.PORT || '3000',
-    mongoUri: process.env.MONGODB_URI || 'mongodb://localhost/minesweeper',
-    nodeEnv: process.env.NODE_ENV || 'development',
+export const environment: Environment = {
+    port: '3000',
+    mongoUri: 'mongodb://localhost/minesweeper',
 };
 
-export default environment;
+const loadConfigFile = () => {
+	const envFileName =  process.env.ENVIRONMENT !== 'development' ? process.env.ENVIRONMENT : '';
+	
+    require("dotenv-safe").config({
+		path: `${envFileName}.env`,
+	});
+};
+
+const setPort = () => {
+    environment.port = process.env.PORT ? process.env.PORT : environment.port;
+};
+
+const setMongoUri = () => {
+    environment.mongoUri = process.env.MONGODB_URI ? process.env.MONGODB_URI : environment.mongoUri;
+};
+
+export const loadConfig = () => {
+    loadConfigFile();
+
+    setPort(); 
+    setMongoUri(); 
+};

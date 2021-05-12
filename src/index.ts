@@ -1,9 +1,10 @@
 import 'reflect-metadata';
 import startServer from './app';
 import connect from './repository/db.connect';
-import environment from './environment';
+import { loadConfig, environment } from './environment';
 
 const main = async () => {
+    loadConfig();
     await connect();
     const app = await startServer();
 
