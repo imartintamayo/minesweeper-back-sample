@@ -6,7 +6,7 @@ import { CreateGameInput, GetGameInput, Game } from '../types/game.types';
 import GameNotFoundException from '../exceptions/game-not-found.exception';
 
 @Resolver()
-export default class MinesweeperResolver {
+export default class GamesResolver {
     @Query(() => Game)
   async getGame(
         @Arg('input') input: GetGameInput,
